@@ -10,18 +10,18 @@ import {
 
 const { width, height } = Dimensions.get("window");
 
-const ProceedBtn = ({ onPress, buttonTexts, marginTop, borderRadius }) => {
+const ProceedBtn = ({ onPress, buttonTexts, marginTop, borderRadius, showArrow = true, width: customWidth, height: customHeight }) => {
   return (
     <View>
       <TouchableOpacity
         onPress={onPress}
         style={[
           styles.button,
-          { marginTop: marginTop, borderRadius: borderRadius },
+          { marginTop: marginTop, borderRadius: borderRadius, width: customWidth, height: customHeight },
         ]}
       >
         <Text style={styles.buttonText}>{buttonTexts}</Text>
-        <Icon name="arrow-forward" size={24} color="#fff" />
+        {showArrow && <Icon name="arrow-right" size={24} color="#fff" />}
       </TouchableOpacity>
     </View>
   );
@@ -31,18 +31,18 @@ export default ProceedBtn;
 
 const styles = StyleSheet.create({
   button: {
-    marginTop: height * 0.018,
-    backgroundColor: "#ACF6AE",
-    paddingVertical: height * 0.012,
-    paddingHorizontal:width * 0.04,
+    // marginTop: 10,
+    // paddingVertical: height * 0.020,
+    // paddingHorizontal: width * 0.2,
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
     gap: width * 0.02,
+    backgroundColor: "#654edf"
   },
   buttonText: {
     color: "#fff",
-    fontWeight: "bold",
+    fontWeight: '400',
     fontSize: width * 0.04,
   },
 });

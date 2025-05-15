@@ -1,18 +1,18 @@
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native'
 import React from 'react'
-import type { PropsWithChildren } from 'react'
+// import type { PropsWithChildren } from 'react'
 import Icon from "react-native-vector-icons/FontAwesome"
 
-type IconsProps = PropsWithChildren<{
-  icon: string;
-  title: string;
-  subtitle: string;
-  showAlert?: boolean;
-  onPress?: () => void;
+// type Icon = PropsWithChildren<{
+//   icon: string;
+//   title: string;
+//   subtitle: string;
+//   showAlert?: boolean;
+//   onPress?: () => void;
 
-}>
+// }>
 
-export default function OptionCard({ icon, title, subtitle, showAlert, onPress }: IconsProps) {
+export default function OptionCard({ icon, title, subtitle, showAlert, onPress }) {
   return (
 
     <TouchableOpacity style={styles.card} onPress={onPress}>
