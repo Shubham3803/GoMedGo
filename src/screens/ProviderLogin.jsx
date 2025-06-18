@@ -1,82 +1,4 @@
-// import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
-// // import { useNavigation } from '@react-navigation/native';
-// // import { RootStackParamList } from '../types';
 
-// import { NavigationContainer } from '@react-navigation/native';
-// // import OtpVerification from './OtpVerification';
-
-
-
-// export default function ProviderLogin() {
-
-
-//   // const navigation = useNavigation();
-
-
-
-//   return (
-//     <NavigationContainer>
-//       <View style={styles.headingContainer}>
-//         
-
-
-//        
-//         
-
-//         <View style={styles.inputRow}>
-//           {/* <View style={styles.country}>
-//             <CountryPicker
-//               withCallingCode
-//               withFilter
-//               withFlag
-//               withCallingCodeButton
-//               countryCode={countryCode}
-//               onSelect={onSelect}
-//             />
-//           </View> */}
-
-//           <View style={styles.number}>
-
-//             <TextInput
-//               placeholder="Enter Phone Number"
-//               keyboardType="phone-pad"
-//               value={phone}
-//               onChangeText={setPhone}
-//               style={styles.input}
-//             />
-//           </View>
-
-//         </View>
-
-        
-
-
-
-//         
-
-
-//       </View>
-//     </NavigationContainer>
-
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   headingContainer: {
-//     padding: 20,
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'flex-start',
-//     gap: 20,
-//   },
-// 
-//  
-  
-//   },
-
-//
-  
-// });
 
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native'
 import React from 'react'
@@ -84,40 +6,23 @@ import ProceedBtn from '../components/ProceedBtn'
 import { useNavigation } from '@react-navigation/native';
 import CheckBox from '@react-native-community/checkbox';
 import { useState } from 'react';
-
-
-// import CountryPicker from 'react-native-country-picker-modal';
-// import { Country, CountryCode } from 'react-native-country-picker-modal';
-
-
+import CountryPicker from 'react-native-country-picker-modal';
+import { Country, CountryCode } from 'react-native-country-picker-modal';
 
 const ProviderLogin = () => {
-
-  // const [countryCode, setCountryCode] = useState('IN');
-  // const [callingCode, setCallingCode] = useState('91');
+  const [countryCode, setCountryCode] = useState('IN');
+  const [callingCode, setCallingCode] = useState('91');
   const [phone, setPhone] = useState('');
-
-
-  // const onSelect = country => {
-  //   setCountryCode(country.cca2);
-  //   setCallingCode(country.callingCode[0]);
-  // };
-  // const [text, setText] = useState('');
-
-
   const [isSelected, setSelection] = useState(false);
-
-
   const navigation = useNavigation();
 
-  // const onSelect = (country: country) => {
-  //   if (country && country.cca2) {
-  //     console.log('Selected country: ', country); // For debugging
-  //     setCountryCode(country.cca2); // Set the 2-letter country code (e.g., 'IN')
-  //     setCallingCode(country.callingCode[0]); // Set the calling code (e.g., '91')
-  //   }
-  // };
-
+  const onSelect = (country) => {
+    if (country && country.cca2) {
+      console.log('Selected country: ', country); // For debugging
+      setCountryCode(country.cca2); // Set the 2-letter country code (e.g., 'IN')
+      setCallingCode(country.callingCode[0]); // Set the calling code (e.g., '91')
+    }
+  };
 
   return (
     <View style={styles.headingContainer}>
@@ -129,8 +34,8 @@ const ProviderLogin = () => {
       </Text>
 
       <Image
-        source={require('../assets/Image/image.png')}
-        style={{ width: 250, height: 250, }}
+        source={require('../assets/Images/display.png')}
+        style={{ width: 200, height: 200, }}
       />
 
       <Text style={styles.text}>
@@ -139,7 +44,7 @@ const ProviderLogin = () => {
 
       <View style={styles.inputRow}>
         <View style={styles.country}>
-          {/* <CountryPicker
+          <CountryPicker
             withCallingCode
             withFilter
             withFlag
@@ -147,12 +52,13 @@ const ProviderLogin = () => {
             countryCode={countryCode}
             onSelect={onSelect}
             containerButtonStyle={styles.countryPickerButton}
-          /> */}
+          />
         </View>
 
         <View style={styles.number}>
           <TextInput
             placeholder="Phone Number"
+            placeholderTextColor="#000"
             keyboardType="phone-pad"
             value={phone}
             onChangeText={setPhone}
@@ -167,7 +73,7 @@ const ProviderLogin = () => {
             <CheckBox
               value={isSelected}
               onValueChange={setSelection}
-              tintColors={{ true: '#654edf', false: '#ccc' }}
+              tintColors={{ true: '#61d9f4', false: '#ccc' }}
             />
             <Text style={{ marginLeft: 8 }}>
               I agree to Terms and Conditions
@@ -200,7 +106,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 28,
-    color: '#654edf',
+    // color: '#654edf',
     fontWeight: '600',
     paddingTop: 20,
   },
@@ -209,7 +115,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   highlight: {
-    color: '#654edf',
+    // color: '#654edf',
     fontWeight: '600',
   },
   text: {

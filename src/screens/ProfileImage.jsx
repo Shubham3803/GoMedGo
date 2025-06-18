@@ -3,6 +3,8 @@ import React from 'react'
 import { useNavigation}  from '@react-navigation/native'
 import StepsContainer from '../components/StepsContainer'
 import ProceedBtn from '../components/ProceedBtn'
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 // import { Image } from 'react-native-reanimated/lib/typescript/Animated'
 
 const ProfileImage = () => {
@@ -17,7 +19,7 @@ const navigation = useNavigation()
     <View style={Styles.screenContainer}>
 
       <TouchableOpacity onPress={() => navigation.goBack()}>
-             <Text style={Styles.arrow}>←</Text>
+      <AntDesign name="arrowleft" size={25}   paddingBottom={20} color="black" />
             </TouchableOpacity>
 
       <StepsContainer
@@ -31,7 +33,7 @@ const navigation = useNavigation()
 
       <View style={Styles.imageBox}>
         <Image
-        source = {require('../assets/Image/uploadimage.png')}
+        source = {require('../assets/Images/uploadimage.png')}
         style={{width:100, height:100, marginTop:40}}
         />
 
@@ -40,7 +42,7 @@ const navigation = useNavigation()
         buttonTexts='Choose Image'
         borderRadius={10}
         width={200}
-        height={70}
+        height={55}
        />
 
           
@@ -76,17 +78,16 @@ const Styles = StyleSheet.create({
   imageBox:{
     // flex:1,
     justifyContent:'center',
-
-    flexDirection:'row',
+    flexDirection:'column',
+    gap:30,
     alignItems:'center',
-    gap:10,
     paddingBottom:50
     
 
   },
   arrow:{
     fontSize: 50,
-    color:'#654edf'
+    color:'#000'
   }
   
   

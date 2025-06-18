@@ -5,6 +5,7 @@ import { StyleSheet } from 'react-native'
 import StepsContainer from '../components/StepsContainer'
 import MapView from 'react-native-maps'
 import ProceedBtn from '../components/ProceedBtn'
+import AntDesign from 'react-native-vector-icons/AntDesign';
 const Map = () => {
 
   const navigation = useNavigation()
@@ -16,7 +17,7 @@ const Map = () => {
     <View style={styles.screenContainer}>
 
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text style={styles.arrow}>←</Text>
+      <AntDesign name="arrowleft" size={25}   paddingBottom={20} color="black" />
       </TouchableOpacity>
 
       <StepsContainer
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
   },
   arrow: {
     fontSize: 50,
-    color: '#654edf'
+    color: '#000'
   },
   map: {
     width: Dimensions.get('window').width,

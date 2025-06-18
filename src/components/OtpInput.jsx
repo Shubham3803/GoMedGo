@@ -2,7 +2,7 @@ import { View, TextInput, StyleSheet } from 'react-native'
 import React, { useRef } from 'react'
 import { useState } from 'react'
 
-const OtpInput = ({length = 6}) => {
+const OtpInput = ({length = 4}) => {
 
 const [otp , setOtp] = useState(new Array(length).fill(''));
 const inputsRef = useRef([]);
@@ -48,8 +48,9 @@ const inputsRef = useRef([]);
 const styles = StyleSheet.create({
   otpContainer: {
     flexDirection: 'row',
-    // gap:8,
-    justifyContent: 'space-between',
+    alignItems:'center',
+    gap:8,
+    justifyContent: 'center',
     marginTop: 30,
     paddingHorizontal: 5,
   },
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderWidth: 2,
-    borderColor: '#654edf',
+    borderColor: '#007299',
     textAlign: 'center',
     fontSize: 24,
     borderRadius: 10,

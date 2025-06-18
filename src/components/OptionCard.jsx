@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-na
 import React from 'react'
 // import type { PropsWithChildren } from 'react'
 import Icon from "react-native-vector-icons/FontAwesome"
+// import Entypo from 'react-native-vector-icons/Entypo';
 
 // type Icon = PropsWithChildren<{
 //   icon: string;
@@ -19,19 +20,21 @@ export default function OptionCard({ icon, title, subtitle, showAlert, onPress }
         
 
         <View style={styles.iconBox}>
-          <Icon name={icon} size={28} color='#654edf'  />
+          <Icon name={icon} size={25} color='#007299'  />
+          
         </View>
 
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.subtitle}>{subtitle}</Text>
+
+
+
+          
         </View>
 
         <View style={styles.right}>
           {showAlert && <Text style={styles.alert}>⚠️</Text>}
-          {icon !== 'phone' && (
-            <Icon name="angle-right" size={30} color="#000"  />
-          )}
+          { <Icon name="angle-right" size={25} color="#000"  />}
         </View>
 
    
@@ -51,18 +54,19 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
   },
   iconBox: {
-    width: 50,
-    height: 50,
-    backgroundColor: '#c1c1c1',
-    borderRadius: 50,
+    width: 40,
+    height: 40,
+    // backgroundColor: '#e5e5e5',
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center"
   },
   
   textContainer: {},
   title: {
-    fontSize: 20,
-    fontWeight: 700,
+    fontSize: 16,
+    fontWeight: 400,
   },
   subtitle: {
     fontSize: 15,

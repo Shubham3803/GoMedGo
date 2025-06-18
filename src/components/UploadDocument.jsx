@@ -1,57 +1,84 @@
-import React, { useState, useRef } from 'react';
-import { Upload } from 'lucide-react';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import * as ImagePicker from 'react-native-image-picker';
 
-const UploadDocument = () => {
-  const [file, setFile] = useState(null);
-  const fileInputRef = useRef(null);
+const UploadDocument = ({ title, onFileSelect }) => {
+  const handleImageSelection = () => {
+    const options = {
+      mediaType: 'photo',
+      includeBase64: false,
+      maxHeight: 2000,
+      maxWidth: 2000,
+    };
 
-  const handleClick = () => {
-    fileInputRef.current.click();
-  };
-
-  const handleFileChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
-    }
+    ImagePicker.launchImageLibrary(options, (response) => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.errorCode) {
+        console.log('ImagePicker Error: ', response.errorMessage);
+      } else if (response.assets && response.assets.length > 0) {
+        const selectedImage = response.assets[0];
+        onFileSelect && onFileSelect(selectedImage);
+      }
+    });
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <h2 className="text-lg font-medium text-blue-600 mb-2">Upload Your Aadhar Card</h2>
-      
-      <div 
-        className={`border-2 border-dashed rounded-lg p-6 border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:border-blue-500 transition-colors ${file ? 'bg-blue-50' : 'bg-white'}`}
-        onClick={handleClick}
+    <View style={styles.container}>
+      <Text style={styles.title}>{title}</Text>
+      <TouchableOpacity 
+        style={styles.uploadContainer} 
+        onPress={handleImageSelection}
+        activeOpacity={0.7}
       >
-        {!file ? (
-          <>
-            <div className="bg-blue-100 p-3 rounded-full mb-2">
-              <Upload className="h-6 w-6 text-blue-500" />
-            </div>
-            <p className="text-blue-500 font-medium">Click to Upload</p>
-          </>
-        ) : (
-          <>
-            <div className="bg-blue-100 p-3 rounded-full mb-2">
-              <Upload className="h-6 w-6 text-blue-500" />
-            </div>
-            <p className="text-blue-700 font-medium">{file.name}</p>
-            <p className="text-sm text-gray-500">
-              {(file.size / 1024).toFixed(2)} KB
-            </p>
-          </>
-        )}
-        
-        <input
-          type="file"
-          ref={fileInputRef}
-          onChange={handleFileChange}
-          className="hidden"
-          accept=".pdf,.jpg,.jpeg,.png"
-        />
-      </div>
-    </div>
+        <View style={styles.uploadIconContainer}>
+          <Text style={styles.plusIcon}>+</Text>
+        </View>
+        <Text style={styles.uploadText}>Click to Upload</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    marginVertical: 10,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '500',
+    marginBottom: 8,
+    color: '#000000',
+  },
+  uploadContainer: {
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: '#654edf',
+    borderRadius: 8,
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f8f9fa',
+  },
+  uploadIconContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#654edf20',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 8,
+  },
+  plusIcon: {
+    fontSize: 24,
+    color: '#000000',
+    fontWeight: 'bold',
+  },
+  uploadText: {
+    color: '#000000',
+    fontSize: 14,
+    fontWeight: '500',
+  },
+});
 
 export default UploadDocument;

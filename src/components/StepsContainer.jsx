@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     marginHorizontal: width * 0.01,
   },
   activeStep: {
-    backgroundColor: "#ACF6AE",
+    backgroundColor: "#007299",
   },
   inactiveStep: {
     backgroundColor: "#d0d8ea",

@@ -3,6 +3,7 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import OtpInput from '../components/OtpInput'
 import ProceedBtn from '../components/ProceedBtn'
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 export default function OtpVerification() {
 
@@ -11,7 +12,7 @@ export default function OtpVerification() {
     <View style={styles.screenContainer}>
 
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text style={styles.arrow}>←</Text>
+      <AntDesign name="arrowleft" size={25} color="black" />
       </TouchableOpacity>
 
       <Text style={styles.Title}>OTP Verification</Text>
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   },
   arrow: {
     fontSize: 50,
-    color:'#654edf'
+    color:'#000'
   },
   Title: {
     fontSize: 28,
